@@ -18,4 +18,4 @@ class Config:
     RECEIVER_ACCESS_TOKEN_SECRET = config['receiver']['AccessTokenSecret']
 
     #user to be mirrored
-    #TWITTER_USER = config['user']['TwitterHandle']
+    TWITTER_USER = config['user']['TwitterHandle']
