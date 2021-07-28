@@ -2,11 +2,11 @@ from configparser import ConfigParser
 
 class Config:
 
-    config = object()
-    def __init__(self, file):
-        self.config = ConfigParser()
-        self.config.read(file)
+    def __init__(self):
+        self.config.read('config.ini')
+        print(self.config.sections())
 
+    config = ConfigParser()
     #keys of the sender account
 
     SENDER_API_KEY = config['sender']['APIKey']
@@ -17,7 +17,7 @@ class Config:
     #keys of the receiver account
 
     RECEIVER_API_KEY = config['receiver']['APIKey']
-    RECEIVER_API_SECRET_KEY =['receiver']['APISecretKey']
+    RECEIVER_API_SECRET_KEY = config['receiver']['APISecretKey']
     RECEIVER_ACCESS_TOKEN = config['receiver']['AccessToken']
     RECEIVER_ACCESS_TOKEN_SECRET = config['receiver']['AccessTokenSecret']
 

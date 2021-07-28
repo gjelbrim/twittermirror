@@ -8,7 +8,6 @@ subprocess.call([sys.executable, "-m","pip", "install", "-r", "requirements.txt"
 print("requirements installed successfully.")
 print("--------------------------------")
 print("Keys of the account which will READ the tweets")
-# print("Enter APIKey:")
 senderAPIKey = input("Enter API Key: ")
 senderAPISecretKey = input("Enter API Secret Key: ")
 senderAccessToken = input("Enter access token: ")
@@ -48,9 +47,9 @@ config['receiver'] = {
     'AccessTokenSecret': receiverAccessTokenSecret
 }
 
-config['user'] = {
-    'TwitterHandle': getUserID()
-    }
+# config['user'] = {
+#     'TwitterHandle': getUserID()
+#     }
 
 with open("config.ini", "w") as file:
     config.write(file)
