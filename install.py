@@ -51,9 +51,9 @@ config['receiver'] = {
     'AccessTokenSecret': receiverAccessTokenSecret
 }
 
-# config['user'] = {
-#     'TwitterHandle': getUserID()
-#     }
+config['user'] = {
+    'TwitterHandle': getUserID()
+    }
 
 with open("config.ini", "w") as file:
     config.write(file)
