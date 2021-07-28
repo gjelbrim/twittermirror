@@ -1,23 +1,26 @@
 from configparser import ConfigParser
 
-file = 'config.ini'
-config = ConfigParser()
-config.read(file)
+class Config:
 
-#keys of the sender account
+    config = object()
+    def __init__(self, file):
+        self.config = ConfigParser()
+        self.config.read(file)
 
-SENDER_API_KEY = config['sender']['APIKey']
-SENDER_API_SECRET_KEY = config['sender']['APISecretKey']
-SENDER_ACCESS_TOKEN = config['sender']['AccessToken']
-SENDER_ACCESS_TOKEN_SECRET = config['sender']['AccessTokenSecret']
+    #keys of the sender account
 
-#keys of the receiver account
+    SENDER_API_KEY = config['sender']['APIKey']
+    SENDER_API_SECRET_KEY = config['sender']['APISecretKey']
+    SENDER_ACCESS_TOKEN = config['sender']['AccessToken']
+    SENDER_ACCESS_TOKEN_SECRET = config['sender']['AccessTokenSecret']
 
-RECEIVER_API_KEY = config['receiver']['APIKey']
-RECEIVER_API_SECRET_KEY =['receiver']['APISecretKey']
-RECEIVER_ACCESS_TOKEN = config['receiver']['AccessToken']
-RECEIVER_ACCESS_TOKEN_SECRET = config['receiver']['AccessTokenSecret']
+    #keys of the receiver account
 
-#user to be mirrored
+    RECEIVER_API_KEY = config['receiver']['APIKey']
+    RECEIVER_API_SECRET_KEY =['receiver']['APISecretKey']
+    RECEIVER_ACCESS_TOKEN = config['receiver']['AccessToken']
+    RECEIVER_ACCESS_TOKEN_SECRET = config['receiver']['AccessTokenSecret']
 
-TWITTER_USER = config['user']['TwitterHandle']
+    #user to be mirrored
+
+    TWITTER_USER = config['user']['TwitterHandle']
