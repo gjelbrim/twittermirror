@@ -2,7 +2,6 @@ from configparser import ConfigParser
 import tweepy
 import subprocess
 import sys
-
 subprocess.call([sys.executable, "-m","pip", "install", "-r", "requirements.txt" ])
 
 print("requirements installed successfully.")
@@ -25,6 +24,11 @@ print("--------------------------------")
 
 
 def getUserID():
+    """this function returns the ID of the user to be mirrored
+
+    Returns:
+        [str]: [ID of user]
+    """
     auth = tweepy.OAuthHandler(senderAPIKey, senderAPISecretKey)
     auth.set_access_token(senderAccessToken, senderAccessTokenSecret)
     api = tweepy.API(auth)
