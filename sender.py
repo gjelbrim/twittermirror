@@ -25,4 +25,4 @@ class Sender:
                 if status.full_text != lastTweet:
                     tweet_handler.handle(status.full_text)
                     lastTweet = status.full_text
-                    time.sleep(12)
+                    time.sleep(120)

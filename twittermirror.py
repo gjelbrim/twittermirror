@@ -1,5 +1,8 @@
 from sender import Sender as sender
+from tweepy import TweepError
 
-s = sender()
- 
-s.stream()
+try:
+    s = sender() 
+    s.stream()
+except TweepError as e:
+    print(e)
