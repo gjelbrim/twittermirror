@@ -1,6 +1,7 @@
 from config import Config as config
 import tweepy
 import time
+from handler import Handler as handler
 
 class Sender:
     def OAuth(self):
@@ -18,9 +19,10 @@ class Sender:
         
     def stream(self):
         lastTweet = ''
+        tweet_handler = handler()
         while True:
-            for status in tweepy.Cursor(self.api.user_timeline, screen_name='@tilidinlenin', tweet_mode="extended").items(1):
+            for status in tweepy.Cursor(self.api.user_timeline, screen_name=config.TWITTER_USER, tweet_mode="extended").items(1):
                 if status.full_text != lastTweet:
-                    print(status.full_text)
+                    tweet_handler.handle(status.full_text)
                     lastTweet = status.full_text
-                    time.sleep(20)
+                    time.sleep(12)
