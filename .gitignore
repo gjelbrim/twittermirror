@@ -1,6 +1,8 @@
 # config file contains sensitive information and will be created during the installation process
 config.ini
 
+test.py
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
