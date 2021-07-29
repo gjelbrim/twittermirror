@@ -23,17 +23,11 @@ print()
 print("--------------------------------")
 
 
-def getUserID():
-    """this function returns the ID of the user to be mirrored
-
-    Returns:
-        [str]: [ID of user]
-    """
-    auth = tweepy.OAuthHandler(senderAPIKey, senderAPISecretKey)
-    auth.set_access_token(senderAccessToken, senderAccessTokenSecret)
-    api = tweepy.API(auth)
-    return api.get_user(twitterUser).id_str
-
+def checkHandle():
+    if twitterUser.startswith("@"):
+        return twitterUser
+    else:
+        return "@"+twitterUser
 
 config = ConfigParser()
 
@@ -52,7 +46,7 @@ config['receiver'] = {
 }
 
 config['user'] = {
-    'TwitterHandle': getUserID()
+    'TwitterHandle': checkHandle()
     }
 
 with open("config.ini", "w") as file:
