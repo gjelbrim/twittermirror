@@ -1,8 +1,7 @@
-from users import Receiver as receiver
-
 """
 this module handles tweet updates
 """
+from users import Receiver as receiver
 
 class Handler:
     """

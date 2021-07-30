@@ -1,11 +1,9 @@
-from configparser import ConfigParser
-import subprocess
-import sys
-
 """
     installation process
 """
-
+from configparser import ConfigParser
+import subprocess
+import sys
 
 subprocess.call([sys.executable, "-m","pip3", "install", "-r", "requirements.txt" ])
 

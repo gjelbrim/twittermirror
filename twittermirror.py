@@ -1,9 +1,8 @@
-from tweepy import TweepError
-from users import Sender as sender
-
 """
     main module
 """
+from tweepy import TweepError
+from users import Sender as sender
 
 try:
     s = sender()

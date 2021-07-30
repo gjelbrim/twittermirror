@@ -1,13 +1,11 @@
+"""
+module with the users
+"""
 import sys
 import tweepy
 from tweepy.error import TweepError
 from config import Config as config
 from handler import Handler as handler
-
-
-"""
-module with the users
-"""
 
 class Sender:
     """

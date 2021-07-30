@@ -1,8 +1,7 @@
-from configparser import ConfigParser
-
 """
 this module will configure twittermirror
 """
+from configparser import ConfigParser
 
 class Config:
     """
