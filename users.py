@@ -10,8 +10,8 @@ class Sender:
             oauth = tweepy.OAuthHandler(config.SENDER_API_KEY,config.SENDER_API_SECRET_KEY)
             oauth.set_access_token(config.SENDER_ACCESS_TOKEN,config.SENDER_ACCESS_TOKEN_SECRET)
         except Exception:
-                print ("Sender couldn't get authenticated")
-                sys.exit()
+            print ("Sender couldn't get authenticated")
+            sys.exit()
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
 
     def stream(self):
