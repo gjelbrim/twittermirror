@@ -1,6 +1,10 @@
 from tweepy import TweepError
 from users import Sender as sender
 
+"""
+    main module
+"""
+
 try:
     s = sender()
     s.stream()

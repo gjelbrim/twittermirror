@@ -1,6 +1,13 @@
 from configparser import ConfigParser
 
+"""
+this module will configure twittermirror
+"""
+
 class Config:
+    """
+    class which holds the configuration setting
+    """
 
     configuration = ConfigParser()
     configuration.read('config.ini')
