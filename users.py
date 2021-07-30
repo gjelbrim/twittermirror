@@ -35,6 +35,12 @@ class Sender:
                 if status.full_text != last_tweet:
                     rec.tweet(status.full_text)
                     last_tweet = status.full_text
+                    
+    def get_last_tweet(self):
+        last_tweet = ''
+        for status in tweepy.Cursor(self.api.user_timeline).items(1):
+            last_tweet = status.text
+        return last_tweet
 
 class Receiver:
     """
