@@ -1,7 +1,8 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/gjelbrim/twittermirror?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/gjelbrim/twittermirror?style=for-the-badge)
-![Lines of code](https://img.shields.io/tokei/lines/github/gjelbrim/twittermirror?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/gjelbrim/twittermirror?style=for-the-badge)
+![GitHub Workflow Status](https://github.com/gjelbrim/twittermirror/actions/workflows/pylint.yml)
+![GitHub](https://github.com/gjelbrim/twittermirror/blob/main/LICENSE)
+![GitHub last commit](https://github.com/gjelbrim/twittermirror/commits/main)
+![GitHub repo size](https://github.com/gjelbrim/twittermirror)
+![Lines of code](https://github.com/gjelbrim/twittermirror)
 # twittermirror
 
 A python script that allows you to mirror a specific Twitter user's (i.e. a user who bulk blocks) tweets.
