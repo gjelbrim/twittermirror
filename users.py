@@ -34,7 +34,7 @@ class Sender:
             tweet = tweepy.Cursor(timeline, screen_name=config.TWITTER_USER, tweet_mode="extended")
             for status in tweet.items(1):
                 if status.full_text != last_tweet:
-                    rec.handle(status.full_text)
+                    rec.tweet(status.full_text)
                     last_tweet = status.full_text
 
 class Receiver:
