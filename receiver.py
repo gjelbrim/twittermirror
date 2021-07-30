@@ -13,7 +13,7 @@ class Receiver:
             
     def __init__(self):
         oauth = self.OAuth()
-        self.api = tweepy.API(oauth)
+        self.api = tweepy.API(oauth,wait_on_rate_limit=True)
 
     def tweet(self, tweet):
         self.api.update_status(tweet)
