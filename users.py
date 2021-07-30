@@ -22,28 +22,36 @@ class Sender:
             print ("Sender couldn't get authenticated")
             sys.exit()
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
-
-    def stream(self):
-        """
-        will pass raw tweet to handler
-        """
-        receiver = Receiver()
-        last_tweet = ''
-        while True:
-            for status in tweepy.Cursor(self.api.user_timeline, screen_name=config.TWITTER_USER, tweet_mode="extended").items(1):
-                if status.full_text != last_tweet:
-                    receiver.tweet(status.full_text)
-                    last_tweet = status.full_text
-                    
+        
     def get_last_tweet(self):
+        """
+        returns own last tweets
+
+        Returns:
+            str: last own tweet
+        """
         last_tweet = ''
         for status in tweepy.Cursor(self.api.user_timeline).items(1):
             last_tweet = status.text
         return last_tweet
 
+    def stream(self):
+        """
+        will pass raw tweet to receiver
+        """
+        receiver = Receiver()
+        last_tweet = self.get_last_tweet()
+        while True:
+            for status in tweepy.Cursor(self.api.user_timeline, screen_name=config.TWITTER_USER).items(1):
+                if status.text != last_tweet:
+                    receiver.tweet(status.text)
+                    last_tweet = status.text
+                    
+    
+
 class Receiver:
     """
-    will recive tweets from sender and tweet them
+    will receive tweets from sender and tweet them
     """
     def __init__(self):
         """
