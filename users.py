@@ -50,7 +50,7 @@ class Receiver:
             oauth.set_access_token(config.RECEIVER_ACCESS_TOKEN,config.RECEIVER_ACCESS_TOKEN_SECRET)
         except TweepError:
             print ("Receiver couldn't get authenticated")
-            sys.exit(1)
+            sys.exit()
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
 
     def tweet(self, tweet):
@@ -60,6 +60,5 @@ class Receiver:
             tweet ([str]): [tweet to be tweeted]
         """
         if not (tweet.startswith("@") or tweet.startswith("RT")):
-            tweet(tweet)
             print("tweeted "+tweet)
         self.api.update_status(tweet)
