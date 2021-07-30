@@ -1,6 +1,12 @@
 from configparser import ConfigParser
 import subprocess
 import sys
+
+"""
+    installation process
+"""
+
+
 subprocess.call([sys.executable, "-m","pip3", "install", "-r", "requirements.txt" ])
 
 print("requirements installed successfully.")
@@ -23,6 +29,11 @@ print("--------------------------------")
 
 
 def check_handle():
+    """checks if the handle is in the right format, fix it if not
+
+    Returns:
+        [string]: [the handle in the right format]
+    """
     if twitterUser.startswith("@"):
         return twitterUser
     return "@"+twitterUser

@@ -4,9 +4,20 @@ from tweepy.error import TweepError
 from config import Config as config
 from handler import Handler as handler
 
+
+"""
+module with the users
+"""
+
 class Sender:
+    """
+    Sender sends the tweets to the receiver
+    """
 
     def __init__(self):
+        """
+        inits the sender
+        """
         try:
             oauth = tweepy.OAuthHandler(config.SENDER_API_KEY,config.SENDER_API_SECRET_KEY)
             oauth.set_access_token(config.SENDER_ACCESS_TOKEN,config.SENDER_ACCESS_TOKEN_SECRET)
@@ -16,6 +27,9 @@ class Sender:
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
 
     def stream(self):
+        """
+        will pass raw tweet to handler
+        """
         last_tweet = ''
         tweet_handler = handler()
         while True:
@@ -27,7 +41,13 @@ class Sender:
                     last_tweet = status.full_text
 
 class Receiver:
+    """
+    will recive tweets from sender and tweet them
+    """
     def __init__(self):
+        """
+        init of receiver
+        """
         try:
             oauth = tweepy.OAuthHandler(config.RECEIVER_API_KEY,config.RECEIVER_API_SECRET_KEY)
             oauth.set_access_token(config.RECEIVER_ACCESS_TOKEN,config.RECEIVER_ACCESS_TOKEN_SECRET)
@@ -37,4 +57,9 @@ class Receiver:
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
 
     def tweet(self, tweet):
+        """will send the tweet to Twitter
+
+        Args:
+            tweet ([str]): [tweet to be tweeted]
+        """
         self.api.update_status(tweet)
