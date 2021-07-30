@@ -1,5 +1,6 @@
 import sys
 import tweepy
+from tweepy.error import TweepError
 from config import Config as config
 from handler import Handler as handler
 
@@ -9,7 +10,7 @@ class Sender:
         try:
             oauth = tweepy.OAuthHandler(config.SENDER_API_KEY,config.SENDER_API_SECRET_KEY)
             oauth.set_access_token(config.SENDER_ACCESS_TOKEN,config.SENDER_ACCESS_TOKEN_SECRET)
-        except Exception:
+        except TweepError:
             print ("Sender couldn't get authenticated")
             sys.exit()
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
@@ -30,7 +31,7 @@ class Receiver:
         try:
             oauth = tweepy.OAuthHandler(config.RECEIVER_API_KEY,config.RECEIVER_API_SECRET_KEY)
             oauth.set_access_token(config.RECEIVER_ACCESS_TOKEN,config.RECEIVER_ACCESS_TOKEN_SECRET)
-        except Exception:
+        except TweepError:
             print ("Receiver couldn't get authenticated")
             sys.exit(1)
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
