@@ -1,6 +1,6 @@
 from config import Config as config
 import tweepy
-import time
+#import time
 from handler import Handler as handler
 
 class Sender:
@@ -15,7 +15,7 @@ class Sender:
             
     def __init__(self):
         oauth = self.OAuth()
-        self.api = tweepy.API(oauth)
+        self.api = tweepy.API(oauth,wait_on_rate_limit=True)
         
     def stream(self):
         lastTweet = ''
@@ -25,4 +25,4 @@ class Sender:
                 if status.full_text != lastTweet:
                     tweet_handler.handle(status.full_text)
                     lastTweet = status.full_text
-                    time.sleep(120)
+                    #time.sleep(120)
