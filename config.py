@@ -4,7 +4,7 @@ class Config:
 
     configuration = ConfigParser()
     configuration.read('config.ini')
-    
+
     #keys of the sender account
     SENDER_API_KEY = configuration['sender']['APIKey']
     SENDER_API_SECRET_KEY = configuration['sender']['APISecretKey']

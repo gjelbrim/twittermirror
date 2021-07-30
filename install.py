@@ -25,8 +25,7 @@ print("--------------------------------")
 def check_handle():
     if twitterUser.startswith("@"):
         return twitterUser
-    else:
-        return "@"+twitterUser
+    return "@"+twitterUser
 
 config = ConfigParser()
 
