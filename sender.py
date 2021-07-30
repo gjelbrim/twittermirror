@@ -21,7 +21,8 @@ class Sender:
         last_tweet = ''
         tweet_handler = handler()
         while True:
-            tweet = tweepy.Cursor(self.api.user_timeline, screen_name=config.TWITTER_USER, tweet_mode="extended")
+            timeline = self.api.user_timeline
+            tweet = tweepy.Cursor(timeline, screen_name=config.TWITTER_USER, tweet_mode="extended")
             for status in tweet.items(1):
                 if status.full_text != last_tweet:
                     tweet_handler.handle(status.full_text)
