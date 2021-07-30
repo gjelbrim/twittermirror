@@ -59,14 +59,7 @@ class Receiver:
         Args:
             tweet ([str]): [tweet to be tweeted]
         """
-        self.api.update_status(tweet)
-
-    def handle(self,tweet):
-        """will tweet the tweet
-
-        Args:
-            tweet ([str]): [the raw tweet that will be handled]
-        """
         if not (tweet.startswith("@") or tweet.startswith("RT")):
             tweet(tweet)
             print("tweeted "+tweet)
+        self.api.update_status(tweet)
