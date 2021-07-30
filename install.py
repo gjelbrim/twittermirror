@@ -22,7 +22,7 @@ print()
 print("--------------------------------")
 
 
-def checkHandle():
+def check_handle():
     if twitterUser.startswith("@"):
         return twitterUser
     else:
@@ -45,7 +45,7 @@ config['receiver'] = {
 }
 
 config['user'] = {
-    'TwitterHandle': checkHandle()
+    'TwitterHandle': check_handle()
     }
 
 with open("config.ini", "w") as file:
