@@ -5,7 +5,6 @@ import sys
 import tweepy
 from tweepy.error import TweepError
 from config import Config as config
-from handler import Handler as handler
 
 class Sender:
     """
@@ -28,14 +27,14 @@ class Sender:
         """
         will pass raw tweet to handler
         """
+        rec = Receiver()
         last_tweet = ''
-        tweet_handler = handler()
         while True:
             timeline = self.api.user_timeline
             tweet = tweepy.Cursor(timeline, screen_name=config.TWITTER_USER, tweet_mode="extended")
             for status in tweet.items(1):
                 if status.full_text != last_tweet:
-                    tweet_handler.handle(status.full_text)
+                    rec.handle(status.full_text)
                     last_tweet = status.full_text
 
 class Receiver:
