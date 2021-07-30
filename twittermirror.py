@@ -1,5 +1,5 @@
 from tweepy import TweepError
-from sender import Sender as sender
+from users import Sender as sender
 
 try:
     s = sender()

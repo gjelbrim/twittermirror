@@ -1,4 +1,4 @@
-from receiver import Receiver as receiver
+from users import Receiver as receiver
 
 class Handler:
 
