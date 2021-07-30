@@ -27,13 +27,12 @@ class Sender:
         """
         will pass raw tweet to handler
         """
-        rec = Receiver()
+        receiver = Receiver()
         last_tweet = ''
         while True:
             for status in tweepy.Cursor(self.api.user_timeline, screen_name=config.TWITTER_USER, tweet_mode="extended").items(1):
-                print(status.full_text)
                 if status.full_text != last_tweet:
-                    rec.tweet(status.full_text)
+                    receiver.tweet(status.full_text)
                     last_tweet = status.full_text
                     
     def get_last_tweet(self):
