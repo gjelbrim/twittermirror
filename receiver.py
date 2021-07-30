@@ -1,6 +1,6 @@
+import sys
 import tweepy
 from config import Config as config
-import sys
 
 class Receiver:
     def o_auth(self):
