@@ -4,7 +4,7 @@ module with the users
 import sys
 import tweepy
 from tweepy.error import TweepError
-from config import Config as config
+from config import Config as conf
 
 class Sender:
     """
@@ -16,38 +16,24 @@ class Sender:
         inits the sender
         """
         try:
-            oauth = tweepy.OAuthHandler(config.SENDER_API_KEY,config.SENDER_API_SECRET_KEY)
-            oauth.set_access_token(config.SENDER_ACCESS_TOKEN,config.SENDER_ACCESS_TOKEN_SECRET)
+            oauth = tweepy.OAuthHandler(conf.SENDER_API_KEY,conf.SENDER_API_SECRET_KEY)
+            oauth.set_access_token(conf.SENDER_ACCESS_TOKEN,conf.SENDER_ACCESS_TOKEN_SECRET)
         except TweepError:
             print ("Sender couldn't get authenticated")
             sys.exit()
         self.api = tweepy.API(oauth,wait_on_rate_limit=True)
-        
-    def get_last_tweet(self):
-        """
-        returns own last tweets
 
+    def get_users_last_tweet(self):
+        """
+        will return the last tweet of the user to be mirrored
         Returns:
-            str: last own tweet
+            str: last tweet of the user to be mirrored
         """
-        last_tweet = ''
-        for status in tweepy.Cursor(self.api.user_timeline).items(1):
-            last_tweet = status.text
-        return last_tweet
+        tweet = ""
+        for status in tweepy.Cursor(self.api.user_timeline, screen_name=conf.TWITTER_USER).items(1):
+            tweet = status.text
+        return tweet
 
-    def stream(self):
-        """
-        will pass raw tweet to receiver
-        """
-        receiver = Receiver()
-        last_tweet = self.get_last_tweet()
-        while True:
-            for status in tweepy.Cursor(self.api.user_timeline, screen_name=config.TWITTER_USER).items(1):
-                if status.text != last_tweet:
-                    receiver.tweet(status.text)
-                    last_tweet = status.text
-                    
-    
 
 class Receiver:
     """
@@ -58,8 +44,8 @@ class Receiver:
         init of receiver
         """
         try:
-            oauth = tweepy.OAuthHandler(config.RECEIVER_API_KEY,config.RECEIVER_API_SECRET_KEY)
-            oauth.set_access_token(config.RECEIVER_ACCESS_TOKEN,config.RECEIVER_ACCESS_TOKEN_SECRET)
+            oauth = tweepy.OAuthHandler(conf.RECEIVER_API_KEY,conf.RECEIVER_API_SECRET_KEY)
+            oauth.set_access_token(conf.RECEIVER_ACCESS_TOKEN,conf.RECEIVER_ACCESS_TOKEN_SECRET)
         except TweepError:
             print ("Receiver couldn't get authenticated")
             sys.exit()
@@ -69,8 +55,18 @@ class Receiver:
         """will send the tweet to Twitter
 
         Args:
-            tweet ([str]): [tweet to be tweeted]
+            tweet str: tweet to be tweeted
         """
-        if not (tweet.startswith("@") or tweet.startswith("RT")):
-            print("tweeted "+tweet)
         self.api.update_status(tweet)
+
+    def get_own_last_tweet(self):
+        """
+        returns own last tweets
+
+        Returns:
+            str: last own tweet
+        """
+        last_tweet = ''
+        for status in tweepy.Cursor(self.api.user_timeline).items(1):
+            last_tweet = status.text
+        return last_tweet
