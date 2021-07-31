@@ -56,3 +56,8 @@ accesstokensecret =
 [user]
 twitterhandle = #it must start with '@'
 ```
+## WIP
+
+- [ ] retweet correctly
+- [ ] command line arguments
+- [ ] change config without reinstall
