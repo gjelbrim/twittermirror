@@ -27,11 +27,12 @@ class Sender:
         """
         will return the last tweet of the user to be mirrored
         Returns:
-            str: last tweet of the user to be mirrored
+            (Status): last tweet of the user to be mirrored
         """
-        tweet = ""
-        for status in tweepy.Cursor(self.api.user_timeline, screen_name=conf.TWITTER_USER).items(1):
-            tweet = status.text
+        tweet = None
+        for status in tweepy.Cursor\
+            (self.api.user_timeline, tweet_mode='extended', screen_name=conf.TWITTER_USER).items(1):
+            tweet = status
         return tweet
 
 
@@ -55,18 +56,31 @@ class Receiver:
         """will send the tweet to Twitter
 
         Args:
-            tweet str: tweet to be tweeted
+            tweet (Status): tweet to be tweeted
         """
-        self.api.update_status(tweet)
+        if 'retweeted_status' in dir(tweet):
+            self.retweet(tweet.retweeted_status.id)
+        else:
+            self.api.update_status(tweet.full_text.replace("@","(@)"))
+            print("tweeted: "+tweet.full_text.replace("@","(@)"))
 
     def get_own_last_tweet(self):
         """
         returns own last tweets
 
         Returns:
-            str: last own tweet
+            (Status): last own tweet
         """
         last_tweet = ''
-        for status in tweepy.Cursor(self.api.user_timeline).items(1):
-            last_tweet = status.text
+        for status in tweepy.Cursor(self.api.user_timeline,tweet_mode="extended").items(1):
+            last_tweet = status
         return last_tweet
+
+    def retweet(self,tweet_id):
+        """retweets the tweet by ID
+
+        Args:
+            id (int): ID of tweet to be retweeted
+        """
+        self.api.retweet(tweet_id)
+        print("retweeted.")
