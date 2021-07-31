@@ -58,6 +58,6 @@ twitterhandle = #it must start with '@'
 ```
 ## WIP
 
-- [ ] retweet correctly
+- [X] retweet correctly
 - [ ] command line arguments
 - [ ] change config without reinstall
