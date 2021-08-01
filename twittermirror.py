@@ -25,6 +25,11 @@ while True:
     comparison_own_tweet = re.sub(r"http\S+", "", own_last_tweet.full_text)
     comparison_users_tweet = re.sub(r"http\S+", "", users_last_tweet.full_text.replace("@","(@)"))
 
-    if (comparison_users_tweet != comparison_own_tweet)\
-        and not 'retweeted_status' in dir(own_last_tweet):
+    both_retweeted =\
+    'retweeted_status' in dir(own_last_tweet) and 'retweeted_status' in dir(own_last_tweet)
+    same_retweet = False
+    if(both_retweeted):
+        same_retweet = own_last_tweet.retweeted_status.id == users_last_tweet.retweeted_status.id
+
+    if ((comparison_users_tweet != comparison_own_tweet) and not(both_retweeted and same_retweet)):
         receiver.tweet(users_last_tweet)
