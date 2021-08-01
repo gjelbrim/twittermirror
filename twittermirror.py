@@ -26,7 +26,7 @@ while True:
     comparison_users_tweet = re.sub(r"http\S+", "", users_last_tweet.full_text.replace("@","(@)"))
 
     both_retweeted =\
-    'retweeted_status' in dir(own_last_tweet) and 'retweeted_status' in dir(own_last_tweet)
+    comparison_own_tweet.startswith("RT ") and comparison_users_tweet.startswith("RT ")
     same_retweet = False
     if(both_retweeted):
         same_retweet = own_last_tweet.retweeted_status.id == users_last_tweet.retweeted_status.id
