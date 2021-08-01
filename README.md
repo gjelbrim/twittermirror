@@ -1,3 +1,4 @@
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/gjelbrim/twittermirror?include_prereleases&style=flat-square)](https://github.com/gjelbrim/twittermirror/releases)
 [![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/gjelbrim/twittermirror?style=flat-square)](https://github.com/gjelbrim/twittermirror)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gjelbrim/twittermirror/Pylint?style=flat-square)](https://github.com/gjelbrim/twittermirror/actions/workflows/pylint.yml)
 [![GitHub](https://img.shields.io/github/license/gjelbrim/twittermirror?style=flat-square)
