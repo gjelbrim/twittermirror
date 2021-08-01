@@ -2,12 +2,7 @@
     installation process
 """
 from configparser import ConfigParser
-import subprocess
-import sys
 
-subprocess.call([sys.executable, "-m","pip3", "install", "-r", "requirements.txt" ])
-
-print("requirements installed successfully.")
 print("--------------------------------")
 print("Keys of the account which will READ the tweets")
 senderAPIKey = input("Enter API Key: ")
