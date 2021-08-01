@@ -13,6 +13,7 @@
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/gjelbrim/twittermirror?style=flat-square)](https://www.codefactor.io/repository/github/gjelbrim/twittermirror)
 
 </center>
+
 # twittermirror
 
 A python script that allows you to mirror a specific Twitter user's (i.e. a user who bulk blocks) tweets.
