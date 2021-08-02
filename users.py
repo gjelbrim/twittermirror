@@ -61,8 +61,11 @@ class Receiver:
         if 'retweeted_status' in dir(tweet):
             self.retweet(tweet.retweeted_status)
         else:
-            self.api.update_status(tweet.full_text.replace("@","(@)"))
-            print("tweeted: "+tweet.full_text.replace("@","(@)"))
+            formatted_tweet = tweet.full_text.replace("@","(@)")
+            if len(formatted_tweet)>280:
+                formatted_tweet = formatted_tweet[:280]
+            self.api.update_status(formatted_tweet)
+            print("tweeted: "+formatted_tweet)
 
     def get_own_last_tweet(self):
         """
