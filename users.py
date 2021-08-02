@@ -59,7 +59,7 @@ class Receiver:
             tweet (Status): tweet to be tweeted
         """
         if 'retweeted_status' in dir(tweet):
-            self.retweet(tweet.retweeted_status.id)
+            self.retweet(tweet.retweeted_status)
         else:
             self.api.update_status(tweet.full_text.replace("@","(@)"))
             print("tweeted: "+tweet.full_text.replace("@","(@)"))
@@ -76,11 +76,12 @@ class Receiver:
             last_tweet = status
         return last_tweet
 
-    def retweet(self,tweet_id):
+    def retweet(self,tweet):
         """retweets the tweet by ID
 
         Args:
             id (int): ID of tweet to be retweeted
         """
-        self.api.retweet(tweet_id)
-        print("retweeted.")
+        if not tweet.retweeted:
+            self.api.retweet(tweet.id)
+            print("retweeted.")
