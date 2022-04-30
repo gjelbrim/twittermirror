@@ -75,4 +75,3 @@ twitterhandle =
 ## WIP
 
 - [ ] command line arguments
-- [ ] change config without reinstall
