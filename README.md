@@ -71,7 +71,3 @@ accesstokensecret =
 twitterhandle =
 #it must start with '@'
 ```
-
-## WIP
-
-- [ ] command line arguments
