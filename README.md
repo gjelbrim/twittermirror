@@ -74,6 +74,5 @@ twitterhandle =
 
 ## WIP
 
-- [X] ~~retweet correctly~~
 - [ ] command line arguments
 - [ ] change config without reinstall
